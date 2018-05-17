@@ -17,6 +17,17 @@ const logoImage = require('./assets/logo.png')
 export default vue.extend({
     name: 'app',
 
+    /*
+    render(h) {
+        return (
+            <div id="app" className={ app } >
+                <img src={ logoImage } />
+                < HelloWorld />
+            </div>
+        )
+    }
+    */
+
     render(h) {
         const children = [
             h('img', {
