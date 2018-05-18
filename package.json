@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --jsx",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -13,8 +13,14 @@
   "devDependencies": {
     "@vue/cli-plugin-typescript": "^3.0.0-beta.10",
     "@vue/cli-service": "^3.0.0-beta.10",
-    "vue-template-compiler": "^2.5.13",
-    "typestyle": "^1.7.2"
+    "awesome-typescript-loader": "^5.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
+    "typestyle": "^1.7.2",
+    "vue-template-compiler": "^2.5.13"
   },
   "browserslist": [
     "> 1%",

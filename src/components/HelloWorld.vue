@@ -35,6 +35,7 @@ export default Vue.extend({
   name: 'HelloWorld',
   props: {
     msg: String,
+    default: "Default"
   },
 });
 </script>
