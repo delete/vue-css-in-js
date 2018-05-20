@@ -1,15 +1,17 @@
-import Vue, { CreateElement } from 'vue';
-import { Component } from 'vue-property-decorator';
+import Vue, { CreateElement } from 'vue'
+import { Component } from 'vue-property-decorator'
 import { style } from "typestyle"
 
 import HelloWorld from './components/hello-world'
+
+import { Colors, Align } from './styles/variables'
 
 const app = style({ 
     'fontFamily': 'Avenir, Helvetica, Arial, sans-serif',
     '-webkit-font-smoothing': 'antialiased',
     '-moz-osx-font-smoothing': 'grayscale',
-    'textAlign': 'center',
-    'color': '#2c3e50',
+    'textAlign': Align.center,
+    'color': Colors.darkGreen,
     'marginTop': '60px'
 })
 

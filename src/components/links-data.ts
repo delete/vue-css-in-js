@@ -1,9 +1,9 @@
-export interface Links {
+export interface Link {
     href: string
     text: string
 }
 
-export const essentialLinks: Array < Links > = [
+export const essentialLinks: Array < Link > = [
     {
         href: 'https://vuejs.org',
         text: 'Core Docs'
@@ -21,7 +21,7 @@ export const essentialLinks: Array < Links > = [
     }
 ]
 
-export const ecosystemLinks: Array < Links > =[
+export const ecosystemLinks: Array < Link > = [
     {
         href: 'https://router.vuejs.org/en/essentials/getting-started.html',
         text: 'vue-router'
@@ -39,5 +39,12 @@ export const ecosystemLinks: Array < Links > =[
     }, {
         href: 'https://github.com/vuejs/awesome-vue',
         text: 'awesome-vue'
+    }
+]
+
+export const pluginLinks: Array < Link > = [
+    {
+        href: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript',
+        text: 'typescript'
     }
 ]
