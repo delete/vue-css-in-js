@@ -6,7 +6,7 @@ import HelloWorld from './components/hello-world'
 
 import { Colors, Align } from './styles/variables'
 
-const app = style({ 
+const appClass = style({ 
     'fontFamily': 'Avenir, Helvetica, Arial, sans-serif',
     '-webkit-font-smoothing': 'antialiased',
     '-moz-osx-font-smoothing': 'grayscale',
@@ -27,7 +27,7 @@ export default class App extends Vue {
 
     render(h: CreateElement) {
         return (
-            <div id="app" class={ app } >
+            <div id="app" class={ appClass } >
                 <img src={ logoImage } />
                 < HelloWorld msg={"UHULLL"}/>
             </div>

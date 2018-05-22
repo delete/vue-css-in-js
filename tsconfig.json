@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es6",
+    "module": "es2015",
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -15,7 +16,11 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "lib": [
+      "es6",
+      "dom"
+    ],
   },
   "include": [
     "src/**/*.ts",

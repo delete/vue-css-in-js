@@ -5,9 +5,9 @@ import { Colors } from '../styles/variables'
 
 import { Link } from './links-data'
 
-export const link = style({ 'color': Colors.green })
-const linksStyles = style({ 'listStyleType': 'none', 'padding': 0 })
-const linksStyles__item = style({ 'display': 'inline-block', 'margin': '0 10px' })
+export const linkClass = style({ 'color': Colors.green })
+const linksClass = style({ 'listStyleType': 'none', 'padding': 0 })
+const linksClass__item = style({ 'display': 'inline-block', 'margin': '0 10px' })
 
 // As there are no state, we can create a functional component here.
 export default Vue.extend({
@@ -17,14 +17,14 @@ export default Vue.extend({
         const { links } = context.props;
 
         const renderLink = (linkItem: Link) =>
-            <li class={ linksStyles__item }>
-                <a class={ link } href={linkItem.href} target="_blank">
+            <li class={ linksClass__item }>
+                <a class={ linkClass } href={linkItem.href} target="_blank">
                     {linkItem.text}
                 </a>
             </li>
 
         return (
-            <ul class={ linksStyles }>
+            <ul class={ linksClass }>
                 {links.map(renderLink)}
             </ul>
         )

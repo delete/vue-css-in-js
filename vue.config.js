@@ -1,4 +1,5 @@
 module.exports = {
+    lintOnSave: true,
     configureWebpack: {
         resolve: {
             // Add `.ts` and `.tsx` as a resolvable extension.
