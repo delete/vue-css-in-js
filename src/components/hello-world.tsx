@@ -3,7 +3,8 @@ import { Component, Prop } from 'vue-property-decorator'
 import { style } from "typestyle"
 
 import { essentialLinks, ecosystemLinks, pluginLinks } from './links-data'
-import Links, { linkClass } from './links'
+import Links from './links'
+import Link from './link';
 
 const titleClass = style({ 'margin': '40px 0 0' })
 
@@ -18,7 +19,11 @@ export default class HelloWorld extends Vue {
         <p>
           For guide and recipes on how to configure / customize this project,<br/>
             check out the
-          <a class={ linkClass } href="https://github.com/vuejs/vue-cli/tree/dev/docs" target="_blank">vue-cli documentation</a>.
+            <Link 
+                href="https://github.com/vuejs/vue-cli/tree/dev/docs"
+                target="_blank">
+              vue-cli documentation
+            </Link>
         </p>
         
         <h3 class={ titleClass }>Installed CLI Plugins</h3>
