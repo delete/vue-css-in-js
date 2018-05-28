@@ -1,9 +1,13 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { style, classes } from 'typestyle'
 
+import styled from './styled-component';
+
 import { Colors } from '../styles/variables'
 
 const defaultClass = style({ 'color': Colors.green })
+
+const StyledLink = styled.a({ 'color': 'blue' })
 
 // As there are no state, we can create a functional component here.
 export default Vue.extend({
@@ -11,11 +15,14 @@ export default Vue.extend({
 
   render(h: CreateElement, { data, props, children }: Record<string, any>): VNode {
     const { class: className, ...rest } = props;
-
     return (
-      <a { ...data } class={ classes(defaultClass, className) }>
+      <StyledLink {...data} myProp={ 'olar' } class={ className }>
         {children}
-      </a>
+      </StyledLink>
+      // 
+      // <a {...data} class={classes(defaultClass, className)}>
+      //   {children}
+      // </a>
     )
   }
 })

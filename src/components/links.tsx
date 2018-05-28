@@ -20,9 +20,9 @@ export default Vue.extend({
 
     const renderLink = (linkItem: LinkModel) =>
       <li class={linksClass__item}>
-        <Link 
+        <Link
             class={linkClass}
-            on-click={() => console.log('clicked!')}
+            onClick={() => console.log('clicked!')}
             target="_blank">
           {linkItem.text}
         </Link>
