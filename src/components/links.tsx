@@ -1,8 +1,6 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { style } from 'typestyle'
 
-import { Colors } from '../styles/variables'
-
 import Link from './link';
 
 import { Link as LinkModel } from './links-data'
