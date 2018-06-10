@@ -8,6 +8,7 @@ import { essentialLinks, ecosystemLinks, pluginLinks } from './links-data'
 import LinksList from './links-list'
 import LinkItem from './links-item';
 import Link from './a';
+import TextField from './text-field';
 
 const StyledLink = styleIt(Link, { 'fontSize': '18px' });
 
@@ -15,7 +16,9 @@ const H3 = styled.h3({ 'margin': '40px 0 10px 0' })
 
 @Component({})
 export default class HelloWorld extends Vue {
-  @Prop({ default: 'default value' }) msg!: string
+  @Prop({ default: 'default value' }) public msg!: string
+
+  public textValue: string = '';
 
   render(h: CreateElement) {
 
@@ -51,6 +54,15 @@ export default class HelloWorld extends Vue {
         
         <H3>Ecosystem</H3>
         <LinksList items={ecosystemLinks} scopedSlots={{ item: renderItem }} />
+
+        <H3>Custom input</H3>
+        <TextField
+          placeholder='Write here'
+          value={ this.textValue }
+          onInput={(e: Event) => ( this.textValue = (e.target as HTMLInputElement).value) }
+        />
+
+        <p>{ this. textValue }</p>
       </div>
     )
   }
