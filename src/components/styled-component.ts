@@ -1,4 +1,4 @@
-import Vue, { CreateElement, VNode, VueConstructor } from 'vue'
+import Vue, { CreateElement, VNode, VueConstructor, ComponentOptions, FunctionalComponentOptions } from 'vue'
 import { style } from 'typestyle'
 import { NestedCSSProperties } from 'typestyle/lib/types';
 
@@ -144,21 +144,36 @@ export enum domElements {
 }
 
 
-const createStyledComponent = (domElement: string) => (styles: NestedCSSProperties) => {
+const createStyledComponent = (component: any) => (styles: NestedCSSProperties) => {
+  const isDomEl = typeof component === 'string';
+  const origialProps = isDomEl ? {} : component.props;
+
   return Vue.extend({
     functional: true,
-    render(h: CreateElement, context: Record<string, any>): VNode {
-      return h(domElement, {
-          ...context.data,
+    render(h: CreateElement, { data, props, children }: Record<string, any>): VNode {
+      return h(component,
+        {
+          props: { ...origialProps, ...props },
+          ...data,
           class: style(styles)
         },
-        context.children
+        children
       )
     }
   })
 }
 
-export default Object.keys(domElements).reduce((obj: any, current: string) => {
+const styleIt = (vueComponent: any, styles: NestedCSSProperties) =>
+  createStyledComponent(vueComponent)(styles);
+
+  
+const styled = Object.keys(domElements).reduce((obj: any, current: string) => {
   obj[current] = createStyledComponent(current);
   return obj;
 }, {});
+
+export default styled;
+export {
+  style,
+  styleIt
+};
