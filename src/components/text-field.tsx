@@ -11,7 +11,7 @@ const Input = styled.input({
 export default Vue.extend({
   functional: true,
 
-  render(h: CreateElement, { data, props, children }: Record<string, any>): VNode {
+  render(h: CreateElement, { data }: Record<string, any>): VNode {
     return (
       <Input {...data} />
     )

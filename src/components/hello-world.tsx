@@ -9,6 +9,7 @@ import LinksList from './links-list'
 import LinkItem from './links-item';
 import Link from './a';
 import TextField from './text-field';
+import FetchData from './fetch-data';
 
 const StyledLink = styleIt(Link, { 'fontSize': '18px' });
 
@@ -32,6 +33,9 @@ export default class HelloWorld extends Vue {
           {linkItem.text}
         </StyledLink>
       </LinkItem>
+
+    const renderResponse = ({ response }: any) => 
+      <ul>{response.map((d: any) => <li>{d.full_name}</li>)}</ul>;
 
     return (
       <div class="hello">
@@ -59,10 +63,17 @@ export default class HelloWorld extends Vue {
         <TextField
           placeholder='Write here'
           value={ this.textValue }
-          onInput={(e: Event) => ( this.textValue = (e.target as HTMLInputElement).value) }
+          onInput={({ target }: Event) => ( this.textValue = (target as HTMLInputElement).value) }
         />
 
         <p>{ this. textValue }</p>
+
+        <H3>Vue repos</H3>
+        <FetchData
+          url='https://api.github.com/orgs/vuejs/repos'
+          scopedSlots={{ response: renderResponse }}>
+          <p slot='loading'>Loading repos...</p>
+        </FetchData>  
       </div>
     )
   }
