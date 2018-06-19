@@ -10,6 +10,7 @@ import LinkItem from './links-item';
 import Link from './a';
 import TextField from './text-field';
 import FetchData from './fetch-data';
+import ProgressBar from './progress-bar';
 
 const StyledLink = styleIt(Link, { 'fontSize': '18px' });
 
@@ -68,12 +69,15 @@ export default class HelloWorld extends Vue {
 
         <p>{ this. textValue }</p>
 
+        <ProgressBar current={20} total={100}/>
+
         <H3>Vue repos</H3>
         <FetchData
           url='https://api.github.com/orgs/vuejs/repos'
           scopedSlots={{ response: renderResponse }}>
           <p slot='loading'>Loading repos...</p>
-        </FetchData>  
+        </FetchData>
+
       </div>
     )
   }
