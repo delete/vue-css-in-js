@@ -1,14 +1,21 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { Component } from 'vue-property-decorator';
-import { style } from './styled-component';
+// @ts-ignore
+import styled from 'vue-styled-components';
 
 @Component({})
 export default class LinksItem extends Vue {
   public render(h: CreateElement): VNode {
+
+    const ListItem = styled.li`
+      display: inline-block;
+      margin: 0 10px;
+    `;
+
     return (
-      <li class={ style({ 'display': 'inline-block', 'margin': '0 10px' }) }>
+      <ListItem>
         { this.$slots.default[0] }
-      </li>
+      </ListItem>
     )
   }
 }

@@ -1,9 +1,9 @@
 import Vue, { CreateElement, VNode } from 'vue';
 import { Prop, Component } from 'vue-property-decorator';
+// @ts-ignore
+import styled from 'vue-styled-components';
 
 import RenderlessProgress from './renderless-progress';
-import { styled } from 'style-it';
-import { NestedCSSProperties } from 'typestyle/lib/types';
 
 @Component
 export default class ProgressBar extends Vue {
@@ -16,29 +16,22 @@ export default class ProgressBar extends Vue {
 
   public render(h: CreateElement): VNode {
 
-    const percentBar = (props: Record<string, any>) => ({
-      height: `${props.height || 15}px`,
-      width: `${props.width || 100}%`,
-      borderRadius: '50px',
-      position: 'relative',
-      backgroundColor: `${props.secondary || '#dedede7d'}`,
-    }) as NestedCSSProperties;
+    const Bar = styled.div`
+      height: 15px;
+      width: 100%;
+      border-radius: 50px;
+      position: relative;
+      background-color: #dedede7d;
+    `;
 
-    const percentBarFill = (props: Record<string, any>) => ({
-      backgroundColor: `${props.primary || '#000'}`,
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      border: 'none',
-      maxWidth: '498px',
-    }) as NestedCSSProperties;
-
-
-    const Bar = styled.div(percentBar({}))
-    const BarInner = styled.span({
-      ...percentBar({}),
-      ...percentBarFill({})
-    })
+    const BarInner = styled(Bar)`
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      max-width: 498px;
+    `;
 
     return (
       <RenderlessProgress

@@ -1,7 +1,8 @@
 import Vue, { CreateElement, VNode } from 'vue'
 import { Prop, Component } from 'vue-property-decorator';
+// @ts-ignore
+import styled from 'vue-styled-components';
 
-import { style } from './styled-component';
 import { Link as LinkModel } from './links-data';
 
 @Component({})
@@ -10,13 +11,21 @@ export default class LinksList extends Vue {
   private items: any[];
   
   public render(h: CreateElement): VNode {
+
+    const List = styled.ul`
+      list-style-type: none;
+      padding: 0;
+    `;
+
     return (
-      <ul clas={ style({ 'listStyleType': 'none', 'padding': 0 }) }>
-        {this.items.map(
-          (linkItem: LinkModel, index: number) =>
-          this.$scopedSlots.item({ linkItem, index }) || ''
-        )}
-      </ul>
+      <List>
+        {
+          this.items.map(
+            (linkItem: LinkModel, index: number) =>
+              this.$scopedSlots.item({ linkItem, index }) || ''
+          )
+        }
+      </List>
     )
   }
 }
