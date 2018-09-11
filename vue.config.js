@@ -1,31 +1,42 @@
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
+const isDevMode = process.env.NODE_ENV === 'development';
+
 module.exports = {
+  ...isDevMode ? {} : { parallel: false },
   configureWebpack: {
     resolve: {
-      // Add `.ts` and `.tsx` as a resolvable extension.
       extensions: [".ts", ".tsx", ".js"],
       symlinks: true,
     },
     devtool: "inline-source-map",
     module: {
       rules: [
-        // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
         {
-          test: /\.ts|\.tsx$/,
+          test: /\.tsx?$/,
           loader: [
-            'babel-loader',
+            {
+              loader: 'babel-loader',
+            },
             {
               loader: 'awesome-typescript-loader',
               options: {
-                useBabel: true,
                 useCache: true,
+                useBabel: true,
+                reportFiles: [
+                  "src/**/*.{ts,tsx}"
+                ],
                 appendTsxSuffixTo: [
                   /\.vue$/
                 ]
-              }
+              },
             }
           ],
         }
       ]
-    }
+    },
+    plugins: [
+      new HardSourceWebpackPlugin()
+    ]
   }
 }
